@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int       @id @default(autoincrement())
+  username    String    @unique
+  email       String    @unique
+  thumbnail   String
+  videos      Video[]   @relation(name: "UserVideo")
+  likedVideos Video[]   @relation(name: "Likes")
+  profile     Profile?  @relation(name: "UserProfile")
+  followers   Profile[] @relation(name: "Follows")
+}
+
+model Video {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  views       Int      @default(0)
+  thumbnail   String
+  url         String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // User | One to Many
+  author    User @relation("UserVideo", fields: [author_id], references: [id], onDelete: Cascade)
+  author_id Int
+
+  // Likes | Many to Many
+  likes User[] @relation("Likes")
+
+  // Tags | One to Many
+  tags Tag[] @relation(name: "TagVideo")
+}
+
+model Tag {
+  id   String @id @unique @default(uuid())
+  name String
+
+  // One to Many
+  video    Video @relation(name: "TagVideo", fields: [video_id], references: [id], onDelete: Cascade)
+  video_id Int
+}
+
+model Profile {
+  id               Int    @id @default(autoincrement())
+  profile_username String
+
+  // One to one
+  user    User @relation(name: "UserProfile", fields: [user_id], references: [id], onDelete: Cascade)
+  user_id Int  @unique
+
+  // One to Many
+  following User[] @relation(name: "Follows")
+}
