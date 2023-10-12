@@ -17,12 +17,12 @@ export const RigthBar = ({ thumbnail, username }: Props) => {
       <div>
          <Sheet>
             <SheetTrigger asChild>
-               <div>
+               <button>
                   <Profile
                      thumbnail={thumbnail}
                      username={username}
                   />
-               </div>
+               </button>
             </SheetTrigger>
 
             <SheetContent

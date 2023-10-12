@@ -17,7 +17,7 @@ export const Input = () => {
          onSubmit={handleSubmit}
       >
          <input
-            type="text"
+            type="search"
             name="search"
             id="search"
             className="bg-transparent w-full h-full px-1 outline-none"
