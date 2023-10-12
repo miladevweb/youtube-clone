@@ -9,6 +9,7 @@ import { UPDATE_VIDEO } from '@/graphql/video';
 import { toast, Toaster } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { GET_USER } from '@/graphql/user';
+import { DeleteVideo } from './DeleteVideo';
 
 type MutationProps = {
    updateVideo: string;
@@ -108,6 +109,11 @@ export const EditVideo = ({ id }: { id: number }) => {
                prevThumbnail={prevThumbnail}
                setPrevThumbnailCallback={setPrevThumbnailCallback}
                thumbnailURL={thumbnailURL}
+            />
+
+            <DeleteVideo
+               id={id}
+               router={router}
             />
 
             <Button />

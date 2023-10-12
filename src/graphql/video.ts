@@ -85,3 +85,9 @@ export const GET_SEARCH = gql`
       }
    }
 `;
+
+export const DELETE_VIDEO = gql`
+   mutation ($id: Int!) {
+      deleteVideo(id: $id)
+   }
+`;
