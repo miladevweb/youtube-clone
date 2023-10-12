@@ -13,18 +13,19 @@ export const Input = () => {
    return (
       <form
          autoComplete="off"
-         className="bg-gray-200 dark:bg-gray-800 rounded-[20px] flex items-center px-4 w-[700px] h-10"
+         className="bg-gray-200 dark:bg-gray-800 rounded-[20px] flex flex-row-reverse items-center px-4 w-[700px] h-10"
          onSubmit={handleSubmit}
       >
-         <input
-            type="search"
-            name="search"
-            id="search"
-            className="bg-transparent w-full h-full px-1 outline-none"
-         />
          <label htmlFor="search">
             <AiOutlineSearch className="text-xl" />
          </label>
+
+         <input
+            type="search"
+            id="search"
+            name="search"
+            className="bg-transparent w-full h-full px-1 outline-none"
+         />
       </form>
    );
 };

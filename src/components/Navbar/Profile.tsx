@@ -11,7 +11,7 @@ export const Profile = ({ thumbnail, username }: Props) => {
          <div className="relative aspect-square w-10 h-10">
             <Image
                src={thumbnail}
-               alt={username}
+               alt="User"
                fill
                loading="lazy"
                placeholder="blur"
