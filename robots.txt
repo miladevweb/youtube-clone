@@ -1,0 +1,2 @@
+User-agent: *
+x-Robots-Tag: noindex
